@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scraping With Mongoose</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+
+
+
+
+<body>
+
+  <!-- navbar -->
+
+  <div class="navbar-fixed">
+    <nav class="nav-wrapper">
+      <div class="container">
+        <a href="/" class="brand-logo">Mongo Scraper</a>
+        <a href="/" class="sidenav-trigger" data-target="mobile-links">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+          <li><a href="/articles/">Saved articles</a></li>
+          <li><a href="/scrape/" class="waves-effect waves-light btn appointment">Scrape new articles</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <ul class="sidenav" id="mobile-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/articles/">Saved articles</a></li>
+    <li><a href="/scrape/" class="waves-effect waves-light btn">Scrape new articles</a></li>
+  </ul>
+
+  <!-- navbar ends -->
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <form class="col s12">
+
+          <div class="row">
+            <div class="input-field col s12">
+              <div id="title"></div>
+              <input placeholder="Placeholder" id="titleinput" type="text" class="validate">
+              <label for="titleinput">Title</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="bodyinput" type="text" class="validate">
+              <label for="bodyinput"></label>
+            </div>
+        </form>
+        <div id="notes"></div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="button"></div>
+      <a href="/" class="modal-close waves-effect waves-green btn-flat">close</a>
+    </div>
+  </div>
+  </div>
+
+
+  <div id="wrapper">
+    <h1>Note Scraper</h1>
+    <div id="articles"></div>
+
+
+
+
+    <div id="results"></div>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
