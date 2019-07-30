@@ -32,7 +32,7 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect("mongodb://<dbuser>:<dbpassword>@ds245677.mlab.com:45677/heroku_rr3h4g9x", { useNewUrlParser: true });
 
 
 // Routes
