@@ -1,7 +1,7 @@
 var express = require("express");
-var logger = require("morgan");
 var mongoose = require("mongoose");
-var exphbs = require("express-handlebars");
+var exphbs = require('express-handlebars');
+
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -20,18 +20,20 @@ var app = express();
 // Configure middleware
 
 // Use morgan logger for logging requests
-app.use(logger("dev"));
-// Parse request body as JSON
+app.use(express.static("public"));
+
+// Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Make public a static folder
-app.use(express.static("public"));
+
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+
 
 // Routes
 
@@ -68,7 +70,7 @@ app.get("/scrape", function (req, res) {
     });
 
     // Send a message to the client
-    res.send("Scrape Complete");
+    res.redirect("/");
   });
 });
 
@@ -128,6 +130,24 @@ app.delete("/articles/delete/:id", function (req, res) {
   console.log(req.params.id)
   // Create a new note and pass the req.body to the entry
   db.Note.find({ _id: req.params.id }).remove().exec()
+
+    .then(function (dbArticle) {
+      // If we were able to successfully update an Article, send it back to the client
+      res.json(dbArticle);
+    })
+    .catch(function (err) {
+      console.log(err)
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
+
+
+
+app.delete("/articles/delete/scrape/:id", function (req, res) {
+  console.log(req.params.id)
+  // Create a new note and pass the req.body to the entry
+  db.Article.find({ _id: req.params.id }).remove().exec()
 
     .then(function (dbArticle) {
       // If we were able to successfully update an Article, send it back to the client
