@@ -12,7 +12,7 @@ var cheerio = require("cheerio");
 // Require all models
 var db = require("./models");
 
-var PORT = 8080;
+var PORT = 3000;
 
 // Initialize Express
 var app = express();
@@ -31,13 +31,11 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var MONGOLAB_URI = process.env.MONGODB_URI || "mongodb://localhost/unit18Populater";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/unit18Populater";
 
-console.log("MONGO LAB", MONGOLAB_URI);
+console.log("MONGO LAB", MONGODB_URI);
 
-mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true });
-
-
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
 
