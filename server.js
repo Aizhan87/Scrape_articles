@@ -33,6 +33,8 @@ app.set("view engine", "handlebars");
 
 var MONGOLAB_URI = process.env.MONGODB_URI || "mongodb://localhost/unit18Populater";
 
+console.log("MONGO LAB", MONGOLAB_URI);
+
 mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true });
 
 
