@@ -31,7 +31,7 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var MONGOLAB_URI = process.env.MONGOHQ_URL || "mongodb://localhost/unit18Populater";
+var MONGOLAB_URI = process.env.MONGODB_URI || "mongodb://localhost/unit18Populater";
 
 mongoose.connect(MONGOLAB_URI, { useNewUrlParser: true });
 
